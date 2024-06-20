@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form"
 import { SignupValidation } from "@/lib/validation"
 import { Loader } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
-import { useCreateUserAccount, useSigInAccount } from "@/lib/react-query/queriesAndMutations"
+import { useCreateUserAccount, useSignInAccount } from "@/lib/react-query/queriesAndMutations"
 import { useUserContext } from "@/context/AuthContext"
 
 const formSchema = z.object({
@@ -20,11 +20,11 @@ const SignupForm = () => {
   const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
   const navigate = useNavigate();
 
-  const { mutateAsync: createUserAccount, isLoading:
+  const { mutateAsync: createUserAccount, isPending:
   isCreatingAccount} = useCreateUserAccount();
   
-  const { mutateAsync: signInAccount, isLoading: isSigningIn } =
-   useSigInAccount();
+  const { mutateAsync: signInAccount, isPending: isSigningIn } =
+   useSignInAccount();
 
    // 1. Define your form.
    const form = useForm<z.infer<typeof SignupValidation>>({
@@ -130,7 +130,7 @@ const SignupForm = () => {
           )}
         />
         <Button type="submit" className="shad-button_primary">
-        {isCreatingUser ? (
+        {isCreatingAccount ? (
           <div className="flex-center gap-2">
             <Loader /> Loading...
           </div>
