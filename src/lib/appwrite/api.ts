@@ -1,7 +1,7 @@
 import { ID, Query } from 'appwrite';
 import { INewPost, INewUser } from "@/types";
 import { account, appwriteConfig, avatars, databases, storage } from './config';
-
+import React from 'react';
 
 
 
@@ -124,7 +124,31 @@ export async function createPost(post: INewPost) {
       deleteFile(uploadedFile.$id);
       throw Error;
     }
-  
+
+    //convert tags into an array
+    const tags = post.tags?.replace(/ /g, '').split(',') || [];
+
+    //save post to datababse
+    const newPost = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.postsCollectionId,
+      ID.unique(),
+      {
+        creator: post.userId,
+        caption:post.caption,
+        imageUrl: fileUrl,
+        imageId: uploadedFile.$id,
+        location: post.location,
+        tags: tags
+      }
+    )
+
+    if(!newPost) {
+      await deleteFile(uploadedFile.$id)
+      throw Error;
+    }
+
+    return newPost;
   } catch (error) {
     console.log(error)
   }
@@ -146,14 +170,14 @@ export async function uploadFile(file: File) {
 }
 
 
-export async function getFilePreview(fileId: string) {
+export function getFilePreview(fileId: string) {
   try {
     const fileUrl = storage.getFilePreview(
       appwriteConfig.storageId,
       fileId,
       2000,
       2000,
-      "top",
+      'top',
       100,
     )
 
@@ -172,6 +196,8 @@ export async function deleteFile(fileId: string) {
     console.log(error)
   }
 }
+
+
 
 
 
