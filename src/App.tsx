@@ -6,6 +6,7 @@ import { CreatePost, EditPost, Explore, Home, PostDetails, Profile, Saved, Updat
 import './globals.css';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from './components/ui/toaster';
+import AllUsers from './_root/pages/AllUsers';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route index element={<Home />}/>
           <Route path="/explore" element={<Explore />} />
           <Route path="/saved" element={<Saved />} />
+          <Route path="/all-users" element={<AllUsers />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/update-post/:id" element={<EditPost />} />
           <Route path="/posts/:id" element={<PostDetails />} />
