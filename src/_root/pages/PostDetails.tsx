@@ -10,7 +10,7 @@ import { useUserContext } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import PostStats from "@/components/shared/PostStats";
 import GridPostList from "@/components/shared/GridPostList";
-import Loader from "@/components/shared/Loader";
+import { Loader } from "lucide-react";
 
 const PostDetails = () => {
   const navigate = useNavigate();
