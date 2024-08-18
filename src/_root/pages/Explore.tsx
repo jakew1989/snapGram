@@ -4,9 +4,14 @@ import { Input } from '@/components/ui/input'
 import useDebounce from '@/hooks/useDebounce';
 import { useGetPosts, useSearchPosts } from '@/lib/react-query/queriesAndMutations';
 import { Loader } from 'lucide-react';
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer';
 
+/**
+ * Functional component that displays a list of posts and allows searching for posts.
+ * Uses the useInView, useGetPosts, useDebounce, and useSearchPosts custom hooks.
+ * @returns JSX element displaying posts and search functionality.
+ */
 const Explore = () => {
   const { ref, inView } = useInView();
   const { data: posts, fetchNextPage, hasNextPage } = useGetPosts();

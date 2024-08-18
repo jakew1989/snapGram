@@ -1,5 +1,9 @@
+/**
+ * Functional component that renders a form to create a new post.
+ * @returns JSX element representing the CreatePost component.
+ */
 import PostForm from '@/components/forms/PostForm'
-import React from 'react'
+
 
 const CreatePost = () => {
   return (
@@ -15,7 +19,7 @@ const CreatePost = () => {
           <h2 className="h3-bold md:h2-bold text-left w-full">Create Post</h2>
         </div>
 
-        <PostForm />
+        <PostForm action="Create" />
       </div>
     </div>
   )

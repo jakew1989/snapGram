@@ -2,8 +2,7 @@ import {
     useQuery,
     useMutation,
     useQueryClient,
-    useInfiniteQuery,
-    QueryClient,
+    useInfiniteQuery
 } from '@tanstack/react-query'
 import { createPost, createUserAccount, deletePost, deleteSavedPost, getCurrentUser, getInfinitePosts, getPostById, getRecentPosts, getUserById, getUsers, likePost, savePost, searchPosts, signInAccount, signOutAccount, UpdatePost, updateUser } from '../appwrite/api'
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'

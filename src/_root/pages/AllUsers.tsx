@@ -4,6 +4,11 @@ import { useGetUsers } from "@/lib/react-query/queriesAndMutations";
 import { Loader } from "lucide-react";
 
 
+/**
+ * Functional component that displays a list of all users.
+ * It fetches user data and handles loading and error states.
+ * @returns JSX element displaying all users
+ */
 const AllUsers = () => {
   const { toast } = useToast();
 

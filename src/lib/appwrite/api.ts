@@ -1,9 +1,6 @@
 import { ID, Query } from 'appwrite';
 import { INewPost, INewUser, IUpdatePost, IUpdateUser } from "@/types";
 import { account, appwriteConfig, avatars, databases, storage } from './config';
-import React from 'react';
-
-
 
 export async function createUserAccount(user: INewUser) {
     try {
@@ -177,8 +174,8 @@ export function getFilePreview(fileId: string) {
       fileId,
       2000,
       2000,
-      top,
-      100,
+      undefined,
+      100
     )
 
     return fileUrl
